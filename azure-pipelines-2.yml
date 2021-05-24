@@ -1,19 +1,13 @@
 trigger:
 - '*'
 
- 
-
 pool:  
  name: 'MyAgentPool'
  demands:
   - npm
 
- 
-
 variables:
   buildConfiguration: 'Release'
-
- 
 
 steps:
 - task: UseDotNet@2
@@ -22,23 +16,14 @@ steps:
     packageType: sdk
     version: 3.1.300
 
- 
-
 - task: Npm@1
   displayName: 'Run npm install'
   inputs:
     verbose: false
 
- 
-
 - script: './node_modules/.bin/node-sass Tailspin.SpaceGame.Web/wwwroot --output Tailspin.SpaceGame.Web/wwwroot'
   displayName: 'Compile Sass assets'
 
- 
-
-
-
- 
 
 - task: DotNetCoreCLI@2
   displayName: 'Restore project dependencies'
